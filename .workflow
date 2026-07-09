@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   preprocess:
     runs-on: ubuntu-latest
@@ -28,6 +31,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add namadataset_raw/ preprocessing/namadataset_preprocessing/
+          git add california_housing_raw/ preprocessing/california_housing_preprocessing/
           git diff --cached --quiet || git commit -m "Auto: update preprocessed dataset"
           git push
